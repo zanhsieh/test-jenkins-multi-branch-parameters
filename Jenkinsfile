@@ -1,5 +1,12 @@
 properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 [$class: 'StringParameterDefinition', 
+  name: 'base_tag',
+  defaultValue: 'base-\${GIT_COMMIT}', 
+  description: """For Docker b2b website project parent image name tag suffix assignment
+                 |Syntax: base-[git commit] OR base-latest
+                 |Example: base-A1B2C3 OR base-latest
+                 |Default "base-\${GIT_COMMIT}" is for triggering via Github web hook""".stripMargin()], 
+[$class: 'StringParameterDefinition', 
   name: 'names',
   defaultValue: 'dev-cn', 
   description: """For i18n specific region build
@@ -20,6 +27,8 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
 
 node {
   stage ('Checkout') {
+    echo "base_tag is ${base_tag}"
+    echo "names is ${names}"
     echo "image_name is ${image_name}"
     echo "kube_version is ${kube_version}"
   }
