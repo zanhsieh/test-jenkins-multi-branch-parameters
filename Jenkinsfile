@@ -13,12 +13,6 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
                  |Syntax: [environment1]-[region1],[environment2]-[region2],...,[environmentN]-[regionN]
                  |Example: dev-cn,dev-hk,prod-cn""".stripMargin()], 
 [$class: 'StringParameterDefinition', 
-  name: 'image_name',
-  defaultValue: 'gogotech/b2b-web', 
-  description: """For Docker b2b website project parent image name tag prefix assignment
-                 |Syntax: [organization name]/[which project]
-                 |Example: gogotech/b2b-web""".stripMargin()], 
-[$class: 'StringParameterDefinition', 
   name: 'kube_version',
   defaultValue: '1.4.3', 
   description: """kubectl version. See: https://coreos.com/kubernetes/docs/latest/configure-kubectl.html
