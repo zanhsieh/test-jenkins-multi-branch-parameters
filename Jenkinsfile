@@ -7,7 +7,7 @@ properties([[$class: 'ParametersDefinitionProperty', parameterDefinitions: [
   name: 'kube_version']]]])
 
 node {
-        // Mark the code checkout 'stage'....
-        stage 'Checkout'
-        // Get some code from a GitHub repository
+  stage ('Checkout') {
+    echo "kube_version is ${kube_version}"
+  }
 }
